@@ -7,6 +7,7 @@ package web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalTime;
+import java.time.LocalDate;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -44,9 +45,13 @@ public class GreetingServlet extends HttpServlet {
             out.println("<h1>Saudações!</h1>");
             try{
                 LocalTime horaAtual = LocalTime.now();
+                LocalDate data = LocalDate.now();
+                int dia = data.getDayOfMonth();
+                int mes = data.getMonthValue();
+                int ano = data.getYear();
                 int hora = horaAtual.getHour();
                 int min = horaAtual.getMinute();
-                out.println("<h2>Agora são " + hora + ":" + min + "</h2>");
+                out.printf("<h2>Agora são %02d:%02d. Do dia %02d/%02d/%d</h2>", hora, min, dia, mes, ano);
                 if (horaAtual.isAfter(LocalTime.of(5, 59)) && horaAtual.isBefore(LocalTime.of(12, 0))) {
                     out.println("<h2>Bom dia!</h2>");
                 } else if (horaAtual.isAfter(LocalTime.of(11, 59)) && horaAtual.isBefore(LocalTime.of(18, 0))) {
