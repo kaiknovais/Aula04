@@ -36,10 +36,28 @@ public class RandomServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RandomServlet</title>");            
+            out.println("<title>RandomServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RandomServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h4><a href='index.html'>Voltar</a></h4>");
+            out.println("<h3>Numeros Aleatórios</h3>");
+            out.println("<form>");
+            out.println("<input type= 'number' name = 'n' value = 'n'>");
+            out.println("<input type= 'submit' name = 'random' value = 'Quantidade'>");
+            out.println("</form>");
+            out.println("<table border = '1'>");
+            out.println("<tr>");
+            out.println("<th>Index</th> <th>Number</th>");
+            int n = Integer.parseInt(request.getParameter("n"));
+            for (int i=1; i<=n; i++){
+                        out.println("<tr>");
+                        out.println("<th>"+i+"</th>");
+                        int rand = ((int)(Math.random()*60)+1);
+                        out.println("<td>"+rand+"</td>");
+                        out.println("</tr>");                        
+            }
+            out.println("</tr>");
+            out.println("</table>");
             out.println("</body>");
             out.println("</html>");
         }

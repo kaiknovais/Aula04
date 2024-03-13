@@ -6,6 +6,7 @@ package web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalTime;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -36,10 +37,24 @@ public class GreetingServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GreetingServlet</title>");            
+            out.println("<title>GreetingServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GreetingServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h4><a href='index.html'>Voltar</a></h4>");
+            out.println("<h1>Saudações!</h1>");
+            LocalTime horaAtual = LocalTime.now();
+            int hora = horaAtual.getHour();
+            int min = horaAtual.getMinute();
+            out.println("<h2>Agora são " + hora + ":" + min + "</h2>");
+            if (horaAtual.isAfter(LocalTime.of(5, 59)) && horaAtual.isBefore(LocalTime.of(12, 0))) {
+                out.println("<h2>Bom dia!</h2>");
+            } else if (horaAtual.isAfter(LocalTime.of(11, 59)) && horaAtual.isBefore(LocalTime.of(18, 0))) {
+                out.println("<h2>Boa tarde!</h2>");
+            } else if (horaAtual.isAfter(LocalTime.of(17, 59)) && horaAtual.isBefore(LocalTime.of(22, 0))) {
+                out.println("<h2>Boa noite!</h2>");
+            } else {
+                out.println("<h2>Vai dormir!</h2>");
+            }
             out.println("</body>");
             out.println("</html>");
         }

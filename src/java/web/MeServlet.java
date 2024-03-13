@@ -36,10 +36,13 @@ public class MeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MeServlet</title>");            
+            out.println("<title>MeServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h4><a href='index.html'>Voltar</a></h4>");
+            out.println("<h1>RA: 1290482222005</h1>");
+            out.println("<h2>Nome: Kaik dos Santos Novais</h2>");
+            out.println("<h2>Idade: 21</h2>");
             out.println("</body>");
             out.println("</html>");
         }
