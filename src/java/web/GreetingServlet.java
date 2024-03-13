@@ -43,26 +43,22 @@ public class GreetingServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h4><a href='index.html'>Voltar</a></h4>");
             out.println("<h1>Saudações!</h1>");
-            try{
-                LocalTime horaAtual = LocalTime.now();
-                LocalDate data = LocalDate.now();
-                int dia = data.getDayOfMonth();
-                int mes = data.getMonthValue();
-                int ano = data.getYear();
-                int hora = horaAtual.getHour();
-                int min = horaAtual.getMinute();
-                out.printf("<h2>Agora são %02d:%02d. Do dia %02d/%02d/%d</h2>", hora, min, dia, mes, ano);
-                if (horaAtual.isAfter(LocalTime.of(5, 59)) && horaAtual.isBefore(LocalTime.of(12, 0))) {
-                    out.println("<h2>Bom dia!</h2>");
-                } else if (horaAtual.isAfter(LocalTime.of(11, 59)) && horaAtual.isBefore(LocalTime.of(18, 0))) {
-                    out.println("<h2>Boa tarde!</h2>");
-                } else if (horaAtual.isAfter(LocalTime.of(17, 59)) && horaAtual.isBefore(LocalTime.of(22, 0))) {
-                    out.println("<h2>Boa noite!</h2>");
-                } else {
-                    out.println("<h2>Vai dormir!</h2>");
-                }
-            }catch (Exception ex) {
-                out.println("<h4 style='color:red'>Invalid parameters!</h4>");
+            LocalTime horaAtual = LocalTime.now();
+            LocalDate data = LocalDate.now();
+            int dia = data.getDayOfMonth();
+            int mes = data.getMonthValue();
+            int ano = data.getYear();
+            int hora = horaAtual.getHour();
+            int min = horaAtual.getMinute();
+            out.printf("<h2>Agora são %02d:%02d. Do dia %02d/%02d/%d</h2>", hora, min, dia, mes, ano);
+            if (horaAtual.isAfter(LocalTime.of(5, 59)) && horaAtual.isBefore(LocalTime.of(12, 0))) {
+                out.println("<h2>Bom dia!</h2>");
+            } else if (horaAtual.isAfter(LocalTime.of(11, 59)) && horaAtual.isBefore(LocalTime.of(18, 0))) {
+                out.println("<h2>Boa tarde!</h2>");
+            } else if (horaAtual.isAfter(LocalTime.of(17, 59)) && horaAtual.isBefore(LocalTime.of(22, 0))) {
+                out.println("<h2>Boa noite!</h2>");
+            } else {
+                out.println("<h2>Vai dormir!</h2>");
             }
             out.println("</body>");
             out.println("</html>");
