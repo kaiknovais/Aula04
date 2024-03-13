@@ -41,23 +41,28 @@ public class RandomServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h4><a href='index.html'>Voltar</a></h4>");
             out.println("<h3>Numeros Aleatórios</h3>");
-            out.println("<form>");
-            out.println("<input type= 'number' name = 'n' value = 'n'>");
-            out.println("<input type= 'submit' name = 'random' value = 'Quantidade'>");
-            out.println("</form>");
             out.println("<table border = '1'>");
             out.println("<tr>");
             out.println("<th>Index</th> <th>Number</th>");
-            int n = Integer.parseInt(request.getParameter("n"));
-            for (int i=1; i<=n; i++){
-                        out.println("<tr>");
-                        out.println("<th>"+i+"</th>");
-                        int rand = ((int)(Math.random()*60)+1);
-                        out.println("<td>"+rand+"</td>");
-                        out.println("</tr>");                        
+            try{
+                boolean [] vet = new boolean [61];
+                for (int i=1; i<=6; i++){
+                    out.println("<tr>");
+                    out.println("<th>"+i+"</th>");
+                    int rand;
+                    do {rand = ((int)(Math.random()*60)+1);
+                    }while (vet[rand]);
+                    vet[rand] = true;
+                    out.println("<td>"+rand+"</td>");
+                    out.println("</tr>");                        
+                }
+            }catch (Exception ex) {
+                out.println("<h4 style='color:red'>Invalid parameters!</h4>");
             }
             out.println("</tr>");
             out.println("</table>");
+            out.println("<br><br>");
+            out.println("<button onclick='location.reload()'>Aleatorizar</button>");
             out.println("</body>");
             out.println("</html>");
         }
